@@ -30,17 +30,33 @@ class _FadingTextAnimationState extends State<FadingTextAnimation> {
     return Scaffold(
       appBar: AppBar(title: Text('Fading Text Animation')),
       body: Center(
-        child: GestureDetector(
-          onTap: toggleVisibility,
-          child: AnimatedOpacity(
-            opacity: _isVisible ? 1.0 : 0.0,
-            duration: Duration(seconds: 1),
-            curve: Curves.bounceIn,
-            child: const Text(
-              'Flutter like a Butterfly!',
-              style: TextStyle(fontSize: 24),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            GestureDetector(
+              onTap: toggleVisibility,
+              child: AnimatedOpacity(
+                opacity: _isVisible ? 1.0 : 0.0,
+                duration: Duration(seconds: 1),
+                curve: Curves.bounceIn,
+                child: const Text(
+                  'Flutter like a Butterfly!',
+                  style: TextStyle(fontSize: 24),
+                ),
+              ),
             ),
-          ),
+            const SizedBox(height: 16),
+            AnimatedOpacity(
+              opacity: _isVisible ? 1.0 : 0.0,
+              duration: const Duration(seconds: 3),
+              curve: Curves.bounceIn,
+              child: const Image(
+                image: AssetImage('assets/butterfly.png'),
+                width: 150,
+                height: 150,
+              ),
+            ),
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
